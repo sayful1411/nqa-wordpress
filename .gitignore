@@ -1,0 +1,108 @@
+# WordPress Core Files
+/wp-admin/
+/wp-includes/
+/wp-content/index.php
+/wp-content/languages
+/wp-content/plugins/index.php
+/wp-content/themes/index.php
+
+# WordPress Configuration
+wp-config.php
+wp-config-local.php
+.htaccess
+
+# WordPress Temp/Cache Files
+wp-content/cache/
+wp-content/backup-db/
+wp-content/backups/
+wp-content/blogs.dir/
+wp-content/upgrade/
+wp-content/uploads/wc-logs/
+
+# WordPress Plugins
+# (uncomment to ignore all plugins)
+wp-content/plugins/*
+
+# Specific WordPress Plugins to ignore
+wp-content/plugins/hello.php
+
+# WordPress Themes
+# (uncomment to ignore all themes except your custom theme)
+wp-content/themes/*
+!wp-content/themes/nurul-quran-academy/
+
+# Log Files
+*.log
+error_log
+debug.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Editor/IDE Files
+*.sublime-project
+*.sublime-workspace
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+.buildpath
+.classpath
+*.tmproj
+*.komodoproject
+
+# Node.js
+node_modules/
+npm-debug.log
+package-lock.json
+yarn.lock
+
+# Composer
+/vendor/
+composer.lock
+
+# Build Files
+/build/
+/dist/
+*.min.js
+*.min.css
+*.map
+
+# Environment Files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Database
+*.sql
+*.sqlite
+*.db
+
+# Temporary Files
+tmp/
+temp/
+*.tmp
+*.bak
+*.backup
+*.old
+
+# Uploads (uncomment if you don't want to track uploads)
+# wp-content/uploads/
+
+# WP-CLI
+wp-cli.local.yml
