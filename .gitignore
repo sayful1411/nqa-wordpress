@@ -102,7 +102,7 @@ temp/
 *.old
 
 # Uploads (uncomment if you don't want to track uploads)
-# wp-content/uploads/
+wp-content/uploads/
 
 # WP-CLI
 wp-cli.local.yml
