@@ -12,3 +12,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: nurul-quran
 Tags: education, e-learning, online-courses, islamic, responsive, custom-theme, wordpress-theme, learning-platform, translation-ready
 */
+
+[x-cloak] {
+    display: none !important;
+}
