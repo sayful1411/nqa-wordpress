@@ -13,7 +13,7 @@
 
 <!-- Footer -->
 <footer class="w-full" role="contentinfo">
-	<div class="relative bg-[#f8f5ec] overflow-hidden pt-16 md:pt-20 lg:pt-24 pb-20 md:pb-24 lg:pb-0 min-h-[631px]">
+	<div class="relative bg-[#f8f5ec] overflow-hidden pt-16 pb-20 md:pb-24 lg:pb-0 min-h-[631px]">
 		<!-- Main Content -->
 		<div
 			class="grid grid-cols-1 lg:grid-cols-[1fr_1.8fr] gap-12 md:gap-20 lg:gap-30 max-w-[1112px] mx-auto px-4 md:px-6 lg:px-0 relative z-[2]">
@@ -31,7 +31,7 @@
 
 				<!-- Auth Button -->
 				<button
-					class="flex w-full max-w-[299px] h-10 md:h-11 items-center justify-center gap-2.5 px-4 py-2.5 rounded-full bg-gradient-to-r from-[#df186a] to-[#fa6f21] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(223,24,106,0.3)] focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+					class="flex w-full max-w-[299px] mx-auto h-10 md:h-11 items-center justify-center gap-2.5 px-4 py-2.5 rounded-full bg-gradient-to-r from-[#df186a] to-[#fa6f21] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(223,24,106,0.3)] focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
 					type="button" aria-label="লগ ইন বা সাইন আপ করুন">
 					<span class="text-white whitespace-nowrap text-body font-normal leading-[150%] mb-0">লগ ইন/ সাইন আপ</span>
 					<span class="w-4 h-4 flex items-center justify-center" aria-hidden="true">
