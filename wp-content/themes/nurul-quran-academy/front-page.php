@@ -12,6 +12,7 @@ get_header(); ?>
 <?php get_template_part('template-parts/hero'); ?>
 <?php get_template_part('template-parts/popular-courses'); ?>
 <?php get_template_part('template-parts/testimonial'); ?>
+<?php get_template_part('template-parts/admission-banner'); ?>
 
 </main>
 
