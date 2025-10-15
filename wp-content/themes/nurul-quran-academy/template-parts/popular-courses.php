@@ -178,7 +178,7 @@
             <div class="bg-[linear-gradient(77deg,rgba(37,2,16,1)0%,rgba(41,103,74,1)52%,rgba(46,175,204,1)100%)] absolute inset-0 bg-cover bg-center"></div>
             <div style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/course-bg-3.png')" class="bg-cover bg-center absolute inset-0"></div>
             <img class="absolute w-[189px] h-[186px] top-0 right-0 object-cover mix-blend-luminosity"
-                src="<?php echo get_template_directory_uri(); ?>/assets/images/course-2.png" alt="<?php esc_attr_e('arrow-right', 'nqa'); ?><?php esc_attr_e('arrow-right', 'nqa'); ?><?php esc_attr_e('arrow-right', 'nqa'); ?><?php esc_attr_e('কুরআন ও সালাত অনুধাবন কোর্স', 'nqa'); ?>কুরআন ও সালাত অনুধাবন কোর্স" />
+                src="<?php echo get_template_directory_uri(); ?>/assets/images/course-2.png" alt="<?php esc_attr_e('course', 'nqa'); ?>" />
             <div class="absolute top-[34px] left-[31px] max-w-[172px]">
                 <h3 class="text-white text-2xl font-semibold leading-[1.3] m-0">কুরআন</h3>
                 <h3 class="text-white text-2xl font-semibold leading-[1.3] m-0">ও সালাত</h3>
@@ -231,7 +231,7 @@
             <div class="bg-[linear-gradient(77deg,rgba(37,2,16,1)0%,rgba(103,103,41,1)52%,rgba(204,172,46,1)100%)] absolute inset-0 bg-cover bg-center"></div>
             <div style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/course-bg-3.png')" class="bg-cover bg-center absolute inset-0"></div>
             <img class="absolute w-[189px] h-[186px] top-0 right-0 object-cover mix-blend-luminosity"
-                src="<?php echo get_template_directory_uri(); ?>/assets/images/course-3.png" <?php esc_attr_e('আরবী হাতের লেখা কোর্স', 'nqa'); ?>" />
+                src="<?php echo get_template_directory_uri(); ?>/assets/images/course-3.png" alt="<?php esc_attr_e('আরবী হাতের লেখা কোর্স', 'nqa'); ?>" />
             <div class="absolute top-[34px] left-[31px] max-w-[172px]">
                 <h3 class="text-white text-2xl font-semibold leading-[1.3] m-0">আরবী</h3>
                 <h3 class="text-white text-2xl font-semibold leading-[1.3] m-0">হাতের</h3>
