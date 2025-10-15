@@ -1,6 +1,6 @@
 <!-- Hero -->
 <section style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/hero-bg.svg')"
-     class="relative bg-primary bg-bottom bg-cover pt-0" role="hero">
+     class="relative bg-primary bg-bottom bg-cover pt-0">
   <div class="relative grid grid-cols-1 lg:grid-cols-2 lg:pl-12">
     <div class="order-2 lg:order-1 px-6 pt-8 lg:pl-8 z-10">
       <!-- Text section -->
@@ -21,7 +21,7 @@
         <!-- CTA Button -->
         <button
           class="bg-gradient-primary self-center inline-flex w-full h-12 items-center justify-center gap-2.5 px-6 py-2.5 border-none rounded-[50px] cursor-pointer transition-all duration-200 no-underline box-border hover:-translate-y-px hover:shadow-[0_4px_8px_rgba(0,0,0,0.2)] focus:outline-2 focus:outline-white focus:outline-offset-2 disabled:opacity-60 disabled:cursor-not-allowed md:self-start md:w-auto"
-          type="button" aria-lasbel="শেখা শুরু করুন - কোর্সে এনরোল করতে ক্লিক করুন">
+          type="button" aria-label="শেখা শুরু করুন - কোর্সে এনরোল করতে ক্লিক করুন">
           <span class="font-medium text-white text-base leading-6 whitespace-nowrap">শেখা শুরু করুন</span>
           <img class="w-4 h-4 flex-shrink-0" src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow-right.svg" alt="<?php esc_attr_e('arrow-right', 'nqa') ?>" aria-hidden="true" />
         </button>

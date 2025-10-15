@@ -198,7 +198,7 @@
                 <span class="text-primary text-sm leading-6 whitespace-nowrap">৫২ স্টুডেন্ট</span>
                 </div>
                 <div class="flex items-center gap-1.5">
-                <img class="w-[14px] h-[14px]" src="<?php echo get_template_directory_uri(); ?>/assets/images/live.svg"<?php esc_attr_e('recorded class', 'nqa'); ?>"  />
+                <img class="w-[14px] h-[14px]" src="<?php echo get_template_directory_uri(); ?>/assets/images/live.svg" alt="<?php esc_attr_e('recorded class', 'nqa'); ?>"  />
                 <span class="text-primary text-sm leading-6 whitespace-nowrap">রেকর্ডেড ক্লাস</span>
                 </div>
             </div>
