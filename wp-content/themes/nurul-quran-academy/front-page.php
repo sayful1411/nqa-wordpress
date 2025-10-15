@@ -14,6 +14,7 @@ get_header(); ?>
 <?php get_template_part('template-parts/testimonial'); ?>
 <?php get_template_part('template-parts/admission-banner'); ?>
 <?php get_template_part('template-parts/feedback'); ?>
+<?php get_template_part('template-parts/special-offer'); ?>
 
 </main>
 
