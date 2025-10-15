@@ -16,6 +16,7 @@ get_header(); ?>
 <?php get_template_part('template-parts/feedback'); ?>
 <?php get_template_part('template-parts/special-offer'); ?>
 <?php get_template_part('template-parts/teacher'); ?>
+<?php get_template_part('template-parts/learning-path'); ?>
 
 </main>
 

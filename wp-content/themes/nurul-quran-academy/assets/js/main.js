@@ -71,3 +71,57 @@ const teacherSwiper = new Swiper('.teacherSwiper', {
         }
     }
 });
+
+
+
+// GSAP Card Stack on Scroll Effect
+gsap.registerPlugin(ScrollTrigger);
+
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+  const cards = gsap.utils.toArray('.card-item');
+
+  if (!cards.length) return;
+
+  // Configuration
+  const baseStickyTop = window.innerWidth > 768 ? 80 : 60;
+  const stackOffset = 20; // Offset between each stacked card
+  const scaleAmount = 0.05; // How much each card scales down
+
+  cards.forEach((card, index) => {
+    const isLast = index === cards.length - 1;
+
+    // Calculate individual sticky position for stacking effect
+    const cardStickyTop = baseStickyTop + (index * stackOffset);
+
+    // Add margin to create spacing between cards
+    if (index > 0) {
+      card.style.marginTop = '40px';
+    }
+
+    // Make each card sticky with progressive top positions
+    // Higher index = higher z-index (so later cards appear on top)
+    gsap.set(card, {
+      position: 'sticky',
+      top: cardStickyTop + 'px',
+      zIndex: index + 1, // Later cards have higher z-index
+      transformOrigin: 'center top'
+    });
+
+    // Last card scrolls freely - make it relative
+    if (isLast) {
+      gsap.set(card, {
+        position: 'relative',
+        top: 'auto'
+      });
+      return;
+    }
+  });
+
+  // Refresh ScrollTrigger on window resize
+  window.addEventListener('resize', () => {
+    ScrollTrigger.refresh();
+  });
+
+  
+});
