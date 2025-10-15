@@ -10,6 +10,7 @@ get_header(); ?>
 <main class="w-full">
 
 <?php get_template_part('template-parts/hero'); ?>
+<?php get_template_part('template-parts/popular-courses'); ?>
 
 </main>
 
