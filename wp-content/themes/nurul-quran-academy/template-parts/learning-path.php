@@ -1,5 +1,5 @@
 <!-- Learning Path -->
-<section style="background: linear-gradient(11deg, rgba(37,2,16,1) 0%, rgba(158,36,71,1) 100%), url('<?php echo get_template_directory_uri(); ?>/assets/images/bg-3.png'); background-size: contain; mix-blend-mode: multiply;"
+<section style="background: linear-gradient(11deg, rgba(37,2,16,1) 0%, rgba(158,36,71,1) 100%), url('<?php echo get_template_directory_uri(); ?>/assets/images/bg-3.png'); background-size: contain; background-blend-mode: multiply;"
     class="bg-contain mix-blend-multiply relative py-8 lg:py-[100px] md:py-[50px]">
     <div class="max-w-[1106px] mx-auto relative z-10 flex flex-col gap-10 items-center px-4 md:px-5 lg:px-0">
     <header class="text-center">
