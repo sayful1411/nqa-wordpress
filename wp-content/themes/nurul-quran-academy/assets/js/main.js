@@ -158,5 +158,56 @@ document.addEventListener('DOMContentLoaded', function() {
     ScrollTrigger.refresh();
   });
 
-  
+  // Category navigation scroll functionality
+  const categoryList = document.querySelector('.hide-scrollbar');
+  const navButton = document.querySelector('nav[aria-label="Course categories"] button');
+
+  if (categoryList && navButton) {
+    // Arrow button click to scroll right
+    navButton.addEventListener('click', () => {
+      // Calculate scroll amount (width of one item + gap)
+      const scrollAmount = 220; // Approximate width of one category item plus gap
+
+      // Smooth scroll to the right
+      categoryList.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
+    });
+
+    // Mouse drag to scroll (like touch scroll)
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    categoryList.addEventListener('mousedown', (e) => {
+      isDown = true;
+      categoryList.style.cursor = 'grabbing';
+      startX = e.pageX - categoryList.offsetLeft;
+      scrollLeft = categoryList.scrollLeft;
+      // Prevent text selection while dragging
+      e.preventDefault();
+    });
+
+    categoryList.addEventListener('mouseleave', () => {
+      isDown = false;
+      categoryList.style.cursor = 'grab';
+    });
+
+    categoryList.addEventListener('mouseup', () => {
+      isDown = false;
+      categoryList.style.cursor = 'grab';
+    });
+
+    categoryList.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - categoryList.offsetLeft;
+      const walk = (x - startX) * 2; // Multiply by 2 for faster scroll
+      categoryList.scrollLeft = scrollLeft - walk;
+    });
+
+    // Set initial cursor style
+    categoryList.style.cursor = 'grab';
+  }
 });
