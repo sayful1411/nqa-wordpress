@@ -73,7 +73,7 @@
 				src="<?php echo get_template_directory_uri(); ?>/assets/images/offer-1.png"
 				alt="<?php esc_attr_e('Offer Image 2', 'nqa'); ?>" />
 			<button
-				class="w-5 h-5 cursor-pointer bg-transparent border-none p-0 flex items-center justify-center rounded transition-opacity duration-200 hover:opacity-80 focus:outline-2 focus:outline-offset-2 sm:w-6 sm:h-6"
+				class="w-5 h-5 z-10 cursor-pointer bg-transparent border-none p-0 flex items-center justify-center rounded transition-opacity duration-200 hover:opacity-80 focus:outline-2 focus:outline-offset-2 sm:w-6 sm:h-6"
 				type="button" aria-label="বন্ধ করুন">
 				<img class="w-4 h-4 sm:w-5 sm:h-5"
 				src="<?php echo get_template_directory_uri(); ?>/assets/images/x-circle.svg"
