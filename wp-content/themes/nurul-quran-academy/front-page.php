@@ -19,6 +19,7 @@ get_header(); ?>
 <?php get_template_part('template-parts/learning-path'); ?>
 <?php get_template_part('template-parts/feature'); ?>
 <?php get_template_part('template-parts/blog'); ?>
+<?php get_template_part('template-parts/offer-cta'); ?>
 
 </main>
 
