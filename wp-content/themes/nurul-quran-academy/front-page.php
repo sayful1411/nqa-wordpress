@@ -21,6 +21,7 @@ get_header(); ?>
 <?php get_template_part('template-parts/blog'); ?>
 <?php get_template_part('template-parts/offer-cta'); ?>
 <?php get_template_part('template-parts/faq'); ?>
+<?php get_template_part('template-parts/tutorial-cta'); ?>
 
 </main>
 

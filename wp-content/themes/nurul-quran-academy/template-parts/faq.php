@@ -1,5 +1,5 @@
 <!-- FAQ -->
-<section class="w-full py-16 px-8 lg:py-24 lg:px-8 bg-[#fefefe]" role="main" aria-label="<?php esc_attr_e('প্রশ্নোত্তর বিভাগ', 'nqa'); ?>">
+<section class="w-full py-16 px-8 bg-[#fefefe]" role="main" aria-label="<?php esc_attr_e('প্রশ্নোত্তর বিভাগ', 'nqa'); ?>">
     <div class="flex flex-col items-center gap-10 w-full mx-auto">
     <header class="flex items-center justify-center gap-3 flex-wrap">
         <h1 class="text-h2 font-medium leading-normal text-gradient bg-clip-text text-transparent text-center mb-0">প্রশ্নোত্তর</h1>
