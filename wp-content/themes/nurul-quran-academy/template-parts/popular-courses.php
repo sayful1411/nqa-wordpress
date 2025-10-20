@@ -273,7 +273,7 @@
                 <button
                     class="border-gradient-primary relative h-10 px-4 py-2.5 inline-flex items-center justify-center gap-2.5 bg-white rounded-[50px] border-none cursor-pointer">
                     <span class="text-primary text-base leading-6 whitespace-nowrap">বিস্তারিত</span>
-                    <img class="w-4 h-4" src="<?php echo get_template_directory_uri(); ?>/assets/images/right-arrow.svg" alt="<?php esc_attr_e('arrow', 'nqa'); ?>" />" />
+                    <img class="w-4 h-4" src="<?php echo get_template_directory_uri(); ?>/assets/images/right-arrow.svg" alt="<?php esc_attr_e('arrow', 'nqa'); ?>" />
                 </button>
                 </footer>
             </div>
