@@ -131,103 +131,20 @@
 			</a>
 			<?php endif; ?>
 
-			<a href="#free-courses"
-				class="flex items-center justify-center gap-2 px-2 py-2.5 flex-shrink-0 rounded-lg border-none no-underline bg-transparent cursor-pointer transition-colors duration-200 hover:bg-black/5"
-				aria-label="ফ্রী কোর্স">
-				<span class="w-fit text-body text-primary font-normal leading-6 whitespace-nowrap">ফ্রী কোর্স</span>
-			</a>
-
-			<div class="relative" x-data="{ open: false }">
-				<button
-					class="flex items-center justify-center gap-2 px-2 py-2.5 flex-shrink-0 rounded-lg border-none bg-transparent cursor-pointer transition-colors duration-200 hover:bg-black/5"
-					type="button" aria-haspopup="true" :aria-expanded="open" @click="open = !open" aria-expanded="true">
-					<span class="w-fit text-body text-primary font-normal leading-6 whitespace-nowrap">সব কোর্স ক্যাটাগরি</span>
-					<div class="w-4 h-4 aspect-square flex items-center justify-center">
-						<img class="dropdown-arrow w-[11px] h-[6px] transition-transform duration-200 rotate-180"
-							src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow-down.svg" 
-							alt="<?php esc_attr_e('arrow-down', 'nqa'); ?>"
-							:class="{ 'rotate-180': open }">
-					</div>
-				</button>
-				<div style="z-index: 999; top: 50px; right: -20px;"
-					class="flex flex-col absolute bg-white border-0 rounded-b px-4 shadow-lg w-[200px]" 
-					x-show="open"
-					x-transition="" 
-					x-cloak
-					@click.away="open = false">
-					<a style="margin: .5rem 0;" href="#"
-						class="inline-flex items-center gap-4 px-2 border border-muted hover:bg-gray-50 rounded transition-colors">
-						<div class="flex items-center w-10 h-10" aria-hidden="true">
-							<img src="<?php echo get_template_directory_uri(); ?>/assets/images/heart.svg" 
-								alt="<?php esc_attr_e('heart', 'nqa'); ?>"
-								style="width: 1.5rem; height: 1.5rem;" 
-								class="object-contain">
-						</div>
-						<div class="course-item__content">
-							<h3 class="text-primary text-sm font-medium">জনপ্রিয় কোর্স সমূহ</h3>
-						</div>
-					</a>
-					<a style="margin: .5rem 0;" href="#"
-						class="inline-flex items-center gap-4 px-2 border border-muted hover:bg-gray-50 rounded transition-colors">
-						<div class="flex items-center w-10 h-10" aria-hidden="true">
-							<img src="<?php echo get_template_directory_uri(); ?>/assets/images/arabic-door.svg" 
-								alt="<?php esc_attr_e('arabic-door', 'nqa'); ?>"
-								style="width: 1.5rem; height: 1.5rem;" 
-								class="object-contain">
-						</div>
-						<div class="course-item__content">
-							<h3 class="text-primary text-sm font-medium">আরবি ভাষা</h3>
-						</div>
-					</a>
-					<a style="margin: .5rem 0;" href="#"
-						class="inline-flex items-center gap-4 px-2 border border-muted hover:bg-gray-50 rounded transition-colors">
-						<div class="flex items-center w-10 h-10" aria-hidden="true">
-							<img src="<?php echo get_template_directory_uri(); ?>/assets/images/BookBookmark.svg" 
-								alt=""
-								style="width: 1.5rem; height: 1.5rem;" class="object-contain">
-						</div>
-						<div class="course-item__content">
-							<h3 class="text-primary text-sm font-medium">কুরআন শিক্ষা</h3>
-						</div>
-					</a>
-					<a style="margin: .5rem 0;" href="#"
-						class="inline-flex items-center gap-4 px-2 border border-muted hover:bg-gray-50 rounded transition-colors">
-						<div class="flex items-center w-10 h-10" aria-hidden="true">
-							<img src="<?php echo get_template_directory_uri(); ?>/assets/images/MoonStars.svg" 
-								alt="<?php esc_attr_e('moon-stars', 'nqa'); ?>"
-								style="width: 1.5rem; height: 1.5rem;" 
-								class="object-contain">
-						</div>
-						<div class="course-item__content">
-							<h3 class="text-primary text-sm font-medium">সীরাত</h3>
-						</div>
-					</a>
-					<a style="margin: .5rem 0;" href="#"
-						class="inline-flex items-center gap-4 px-2 border border-muted hover:bg-gray-50 rounded transition-colors">
-						<div class="flex items-center w-10 h-10" aria-hidden="true">
-							<img src="<?php echo get_template_directory_uri(); ?>/assets/images/VideoCamera.svg" 
-								alt="<?php esc_attr_e('video-camera', 'nqa'); ?>"
-								style="width: 1.5rem; height: 1.5rem;" 
-								class="object-contain">
-						</div>
-						<div class="course-item__content">
-							<h3 class="text-primary text-sm font-medium">প্রি-রেকর্ডেড কোর্স</h3>
-						</div>
-					</a>
-					<a style="margin: .5rem 0;" href="#"
-						class="inline-flex items-center gap-4 px-2 border border-muted hover:bg-gray-50 rounded transition-colors">
-						<div class="flex items-center w-10 h-10" aria-hidden="true">
-							<img src="<?php echo get_template_directory_uri(); ?>/assets/images/key.svg" 
-								alt="<?php esc_attr_e('key', 'nqa'); ?>"
-								style="width: 1.5rem; height: 1.5rem;" 
-								class="object-contain">
-						</div>
-						<div class="course-item__content">
-							<h3 class="text-primary text-sm font-medium">ফিকহ শিক্ষা</h3>
-						</div>
-					</a>
-				</div>
-			</div>
+			<?php
+			if ( has_nav_menu( 'primary' ) ) {
+                wp_nav_menu( array(
+                    'theme_location' => 'primary',
+                    'container'      => false,
+                    'menu_class'     => 'flex items-center gap-3',
+                    'fallback_cb'    => false,
+                    'link_before'    => '<span class="w-fit text-body text-primary font-normal leading-6 whitespace-nowrap">',
+                    'link_after'     => '</span>',
+                    'walker'         => new Dropdown_Walker(),
+                    'items_wrap'     => '%3$s', // Remove default <ul> wrapper
+                ));
+			}
+            ?>
 		</nav>
 	</div>
 
