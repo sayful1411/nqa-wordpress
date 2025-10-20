@@ -55,52 +55,81 @@
 <?php wp_body_open(); ?>
 
 <!-- Offer Banner -->
-<div class="w-full bg-[#9b1b40]" role="banner">
+<?php if (get_theme_mod('show_offer_banner', true)): ?>
+<div class="w-full" role="banner" style="background-color:<?php echo esc_attr(get_theme_mod('offer_bg_color', '#9b1b40')); ?>">
 	<div
 		class="relative flex items-center justify-between min-h-[40px] px-4 gap-2 md:gap-4 sm:px-3 xs:px-2 xs:gap-1">
+		<?php
+            $left_image = get_theme_mod('offer_left_image');
+		if ($left_image): ?>
+			<img class="absolute left-4 flex-shrink-0 h-6 w-auto mix-blend-luminosity object-cover sm:h-8 md:h-10"
+				src="<?php echo esc_url($left_image); ?>"
+				alt="<?php esc_attr_e('Offer', 'nqa'); ?>" />
+		<?php else: ?>
 		<img class="absolute left-4 flex-shrink-0 h-6 w-auto mix-blend-luminosity object-cover sm:h-8 md:h-10"
-			src="<?php echo get_template_directory_uri(); ?>/assets/images/offer-2.png"
-			alt="<?php esc_attr_e('Offer Image 1', 'nqa'); ?>" />
-
+                src="<?php echo get_template_directory_uri(); ?>/assets/images/offer-2.png"
+                alt="<?php esc_attr_e('Offer', 'nqa'); ?>" />
+        <?php endif; ?>
 		<div class="flex-1 flex justify-center items-center mx-1 sm:mx-2 md:mx-4">
 			<h6 class="font-normal m-0 text-body text-center leading-tight text-white">
-				ছোটদের কোরআন শিক্ষা কোর্সে
+				<?php echo esc_html_e(get_theme_mod('offer_text', 'ছোটদের কোরআন শিক্ষা কোর্সে')); ?>
 			</h6>
 		</div>
 
 		<div class="flex items-center gap-1 flex-shrink-0 sm:gap-2 md:gap-4">
-			<img class="absolute right-4 h-6 w-auto mix-blend-luminosity object-cover sm:h-8 md:h-10"
-				src="<?php echo get_template_directory_uri(); ?>/assets/images/offer-1.png"
-				alt="<?php esc_attr_e('Offer Image 2', 'nqa'); ?>" />
+		<?php
+            $right_image = get_theme_mod('offer_right_image');
+			if ($right_image): ?>
+				<img class="absolute right-4 h-6 w-auto mix-blend-luminosity object-cover sm:h-8 md:h-10"
+					src="<?php echo esc_url($right_image); ?>"
+					alt="<?php esc_attr_e('Offer', 'nqa'); ?>" />
+			<?php else: ?>
+				<img class="absolute right-4 h-6 w-auto mix-blend-luminosity object-cover sm:h-8 md:h-10"
+					src="<?php echo get_template_directory_uri(); ?>/assets/images/offer-1.png"
+					alt="<?php esc_attr_e('Offer', 'nqa'); ?>" />
+			<?php endif; ?>
 			<button
 				class="w-5 h-5 z-10 cursor-pointer bg-transparent border-none p-0 flex items-center justify-center rounded transition-opacity duration-200 hover:opacity-80 focus:outline-2 focus:outline-offset-2 sm:w-6 sm:h-6"
-				type="button" aria-label="বন্ধ করুন">
+				type="button" aria-label="<?php esc_attr_e('বন্ধ করুন', 'nqa'); ?>"
+                onclick="this.closest('[role=banner]').remove()">
 				<img class="w-4 h-4 sm:w-5 sm:h-5"
-				src="<?php echo get_template_directory_uri(); ?>/assets/images/x-circle.svg"
-				alt="<?php esc_attr_e('x-circle', 'nqa'); ?>" />
+					src="<?php echo get_template_directory_uri(); ?>/assets/images/x-circle.svg"
+					alt="<?php esc_attr_e('x-circle', 'nqa'); ?>" />
 			</button>
 		</div>
 	</div>
 </div>
+<?php endif; ?>
 
 <!-- Header -->
 <header class="flex w-full items-center justify-between px-10 py-4 bg-white box-border md:flex-col lg:flex-row"
 	role="banner">
 	<div class="flex items-center gap-0 flex-shrink-0 md:gap-12">
-		<img class="w-[120px] h-auto aspect-[2.62] object-cover md:w-[163px]"
-			src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png"
-			alt="<?php esc_attr_e('Logo', 'nqa'); ?>" />
+	<?php if (has_custom_logo()): ?>
+		<?php the_custom_logo(); ?>
+	<?php else: ?>
+		<h1 class="text-2xl font-bold text-primary m-0">
+			<a href="<?php echo esc_url(home_url('/')); ?>" class="no-underline text-inherit">
+				<?php bloginfo('name'); ?>
+			</a>
+		</h1>
+	<?php endif; ?>
 
 		<nav class="relative hidden md:flex items-center gap-3 flex-shrink-0"
 			role="navigation"
 			aria-label="Main navigation"
 			x-data="{ coursesOpen: false }"
 			@click.outside="coursesOpen = false">
-			<a href="#special-offer"
+
+			<?php if ( get_theme_mod( 'special_offer', true ) ) : ?>
+			<a href="<?php echo esc_url(get_theme_mod('special_offer_url', '#special-offer')); ?>"
 				class="nav-link-special relative flex items-center justify-center gap-2 px-2 py-2.5 flex-shrink-0 rounded-lg border-none no-underline bg-transparent cursor-pointer transition-colors duration-200 hover:bg-black/5"
-				aria-label="স্পেশাল অফার">
-				<span class="w-fit text-body text-primary font-normal leading-6 whitespace-nowrap">স্পেশাল অফার</span>
+				aria-label="<?php echo esc_attr_e(get_theme_mod('special_offer_text', 'স্পেশাল অফার'), 'nqa') ?>">
+				<span class="w-fit text-body text-primary font-normal leading-6 whitespace-nowrap">
+				<?php echo esc_html_e(get_theme_mod('special_offer_text', 'স্পেশাল অফার'), 'nqa'); ?>
+				</span>
 			</a>
+			<?php endif; ?>
 
 			<a href="#free-courses"
 				class="flex items-center justify-center gap-2 px-2 py-2.5 flex-shrink-0 rounded-lg border-none no-underline bg-transparent cursor-pointer transition-colors duration-200 hover:bg-black/5"
@@ -203,22 +232,30 @@
 	</div>
 
 	<div class="flex justify-end items-center gap-3 flex-shrink-0 md:gap-4">
-		<button
+		<?php if(get_theme_mod('show_login_button', true)): ?>
+		<a href="<?php echo esc_url(get_theme_mod('login_button_url', '#login')); ?>"
 			class="hidden md:flex items-center justify-center h-12 px-2 py-2.5 gap-2 rounded-[50px] border border-white bg-white text-body font-normal leading-6 cursor-pointer transition-colors duration-200 flex-shrink-0 hover:bg-black/5"
-			type="button" aria-label="লগ ইন">
-			<span class="w-fit text-body text-primary whitespace-nowrap">লগ ইন</span>
+			type="button" aria-label="<?php echo esc_attr_e(get_theme_mod('login_button_text', 'লগ ইন'), 'nqa'); ?>">
+			<span class="w-fit text-body text-primary whitespace-nowrap">
+			<?php echo esc_html_e(get_theme_mod('login_button_text', 'লগ ইন'), 'nqa'); ?>
+			</span>
 			<div class="flex items-center justify-center">
 				<img class="w-4 h-[10px]"
 					src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow-right-active.svg"
 					alt="<?php esc_attr_e('arrow-right-active', 'nqa'); ?>" />
 			</div>
-		</button>
+		</a>
+		<?php endif; ?>
 
-		<button
+        <?php if(get_theme_mod('show_contact_button', true)): ?>
+		<a href="<?php echo esc_url(get_theme_mod('contact_button_url', '#contact')); ?>"
 			class="border-gradient-primary relative flex items-center justify-center h-12 px-6 py-2.5 gap-2.5 rounded-[50px] bg-white text-sm font-normal leading-6 cursor-pointer transition-colors duration-200 flex-shrink-0 hover:bg-black/5 md:text-body"
-			type="button" aria-label="যোগাযোগ করুন">
-			<span class="w-fit text-body text-primary whitespace-nowrap">যোগাযোগ করুন</span>
-		</button>
+			type="button" aria-label="<?php echo esc_attr_e(get_theme_mod('contact_button_text', default_value: 'যোগাযোগ করুন'), 'nqa'); ?>">
+			<span class="w-fit text-body text-primary whitespace-nowrap">
+			<?php echo esc_html_e(get_theme_mod('contact_button_text', 'যোগাযোগ করুন'), 'nqa'); ?>
+			</span>
+		</a>
+		<?php endif; ?>
 	</div>
 </header>
 
