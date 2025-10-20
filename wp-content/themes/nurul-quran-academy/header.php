@@ -181,63 +181,13 @@
 	aria-label="Mobile navigation">
 	<div
 		class="flex items-center justify-between p-4 bg-white max-w-[768px] mx-auto xs:p-3 xs:px-2 sm:p-2.5 sm:px-1">
-		<a href="#home"
-			class="mobile-nav-item flex flex-col items-center gap-1 px-2 no-underline transition-opacity duration-200 cursor-pointer hover:opacity-80 xs:px-1 xs:gap-0.5 sm:px-0.5"
-			aria-current="page">
-			<div class="w-5 h-5 flex items-center justify-center relative xs:w-[18px] xs:h-[18px] sm:w-4 sm:h-4"
-				aria-hidden="true">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/home-menu-active.svg" alt="<?php esc_attr_e('home', 'nqa'); ?>" class="max-w-full max-h-full object-contain">
-			</div>
-			<span
-				class="mobile-nav-active text-center text-body text-primary leading-6 whitespace-nowrap transition-colors duration-200">হোম</span>
-		</a>
-
-		<a href="#special"
-			class="mobile-nav-item flex flex-col items-center gap-1 px-2 no-underline transition-opacity duration-200 cursor-pointer hover:opacity-80 xs:px-1 xs:gap-0.5 sm:px-0.5">
-			<div class="w-5 h-5 flex items-center justify-center relative xs:w-[18px] xs:h-[18px] sm:w-4 sm:h-4"
-				aria-hidden="true">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/gift-menu.svg" alt="<?php esc_attr_e('special', 'nqa'); ?>" class="max-w-full max-h-full object-contain">
-			</div>
-			<span
-				class="text-center text-bodyleading-6 whitespace-nowrap text-[#afafaf] transition-colors duration-200">
-				স্পেশাল
-			</span>
-		</a>
-
-		<a href="#free-courses"
-			class="mobile-nav-item flex flex-col items-center gap-1 px-2 no-underline transition-opacity duration-200 cursor-pointer hover:opacity-80 xs:px-1 xs:gap-0.5 sm:px-0.5">
-			<div class="w-5 h-5 flex items-center justify-center relative xs:w-[18px] xs:h-[18px] sm:w-4 sm:h-4"
-				aria-hidden="true">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/circle-menu.svg" alt="<?php esc_attr_e('free course', 'nqa'); ?>" class="max-w-full max-h-full object-contain">
-			</div>
-			<span
-				class="text-center text-body leading-6 whitespace-nowrap text-[#afafaf] transition-colors duration-200">
-				ফ্রী কোর্স
-			</span>
-		</a>
-
-		<a href="#all-courses"
-			class="mobile-nav-item flex flex-col items-center gap-1 px-2 no-underline transition-opacity duration-200 cursor-pointer hover:opacity-80 xs:px-1 xs:gap-0.5 sm:px-0.5">
-			<div class="w-5 h-5 flex items-center justify-center relative xs:w-[18px] xs:h-[18px] sm:w-4 sm:h-4"
-				aria-hidden="true">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cap-menu.svg" alt="<?php esc_attr_e('all-courses', 'nqa'); ?>" class="max-w-full max-h-full object-contain">
-			</div>
-			<span
-				class="text-center text-body leading-6 whitespace-nowrap text-[#afafaf] transition-colors duration-200">
-				সব কোর্স
-			</span>
-		</a>
-
-		<a href="#login"
-			class="mobile-nav-item flex flex-col items-center gap-1 px-2 no-underline transition-opacity duration-200 cursor-pointer hover:opacity-80 xs:px-1 xs:gap-0.5 sm:px-0.5">
-			<div class="w-5 h-5 flex items-center justify-center relative xs:w-[18px] xs:h-[18px] sm:w-4 sm:h-4"
-				aria-hidden="true">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/user-menu.svg" alt="<?php esc_attr_e('login', 'nqa'); ?>" class="max-w-full max-h-full object-contain">
-			</div>
-			<span
-				class="text-center text-xs leading-6 whitespace-nowrap text-[#afafaf] transition-colors duration-200">
-				লগ ইন
-			</span>
-		</a>
+		<?php
+        wp_nav_menu( [
+            'theme_location' => 'mobile',
+            'container'      => false,
+            'items_wrap'     => '%3$s', // no <ul>
+            'walker'         => new Mobile_Menu_Walker(),
+        ]);
+        ?>
 	</div>
 </nav>

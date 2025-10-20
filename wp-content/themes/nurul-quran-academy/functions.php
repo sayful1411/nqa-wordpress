@@ -41,6 +41,7 @@ require get_template_directory() . '/inc/customizer.php';
  * Custom Walker
  */
 require get_template_directory() . '/inc/dropdown-walker.php';
+require get_template_directory() . '/inc/mobile-menu-walker.php';
 
 /**
  * ACF Setup 

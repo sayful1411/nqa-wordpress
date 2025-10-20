@@ -48,6 +48,7 @@ function nurul_quran_academy_setup() {
 	register_nav_menus(
 		array(
 			'primary' => __('Primary Menu', 'nqa'),
+			'mobile'  => __('Mobile Menu', 'nurul-quran'),
 		)
 	);
 
