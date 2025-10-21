@@ -13,6 +13,13 @@ Text Domain: nurul-quran
 Tags: education, e-learning, online-courses, islamic, responsive, custom-theme, wordpress-theme, learning-platform, translation-ready
 */
 
+/* Global */
 [x-cloak] {
     display: none !important;
+}
+
+/* Header */
+.custom-logo {
+    width: 150px;
+    height: auto;
 }
