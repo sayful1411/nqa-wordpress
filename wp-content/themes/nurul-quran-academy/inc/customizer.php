@@ -62,8 +62,6 @@ add_action( 'customize_preview_init', 'nurul_quran_academy_customize_preview_js'
 
 /**
  * Header Customizer
- * @param mixed $wp_customize
- * @return void
  */
 function nqa_header_customizer($wp_customize) {
     
@@ -253,3 +251,269 @@ function nqa_header_customizer($wp_customize) {
     ));
 }
 add_action('customize_register', 'nqa_header_customizer');
+
+/**
+ * Footer Customizer
+ */
+function nqa_footer_customizer($wp_customize) {
+    
+    // Main Footer Panel
+    $wp_customize->add_panel('footer_panel', array(
+        'title'    => __('Footer Settings', 'nqa'),
+        'priority' => 35,
+    ));
+    
+    // --- About Section ---
+    $wp_customize->add_section('footer_about_section', array(
+        'title'       => __('About Section', 'nqa'),
+        'description' => __('Configure the about/logo section of the footer including logo, description, and button.', 'nqa'),
+        'panel'       => 'footer_panel',
+        'priority'    => 10,
+    ));
+    
+    $wp_customize->add_setting('footer_logo', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'footer_logo', array(
+        'label'       => __('Footer Logo', 'nqa'),
+        'section'     => 'footer_about_section',
+        'description' => __('Upload footer logo', 'nqa'),
+    )));
+    
+    $wp_customize->add_setting('footer_description', array(
+        'default'           => 'ইসলামী জ্ঞান অর্জনের অনলাইনভিত্তিক অনন্য একটি শিক্ষা প্রতিষ্ঠান।',
+        'sanitize_callback' => 'wp_kses_post',
+    ));
+    
+    $wp_customize->add_control('footer_description', array(
+        'label'   => __('Footer Description', 'nqa'),
+        'section' => 'footer_about_section',
+        'type'    => 'textarea',
+    ));
+    
+    $wp_customize->add_setting('footer_button_text', array(
+        'default'           => 'লগ ইন/ সাইন আপ',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    
+    $wp_customize->add_control('footer_button_text', array(
+        'label'   => __('Button Text', 'nqa'),
+        'section' => 'footer_about_section',
+        'type'    => 'text',
+    ));
+    
+    $wp_customize->add_setting('footer_button_url', array(
+        'default'           => '#login',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    
+    $wp_customize->add_control('footer_button_url', array(
+        'label'   => __('Button URL', 'nqa'),
+        'section' => 'footer_about_section',
+        'type'    => 'url',
+    ));
+    
+    // --- Contact Section ---
+    $wp_customize->add_section('footer_contact_section', array(
+        'title'       => __('Contact Section', 'nqa'),
+        'description' => __('Configure contact information including title, labels, address, phone, email, and complaint box.', 'nqa'),
+        'panel'       => 'footer_panel',
+        'priority'    => 20,
+    ));
+    
+    $wp_customize->add_setting('footer_contact_title', array(
+        'default'           => 'যোগাযোগ',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    
+    $wp_customize->add_control('footer_contact_title', array(
+        'label'       => __('Contact Section Title', 'nqa'),
+        'section'     => 'footer_contact_section',
+        'type'        => 'text',
+        'description' => __('Main heading for the contact section', 'nqa'),
+    ));
+    
+    $wp_customize->add_setting('footer_address_label', array(
+        'default'           => 'ঠিকানা:',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    
+    $wp_customize->add_control('footer_address_label', array(
+        'label'   => __('Address Label', 'nqa'),
+        'section' => 'footer_contact_section',
+        'type'    => 'text',
+    ));
+    
+    $wp_customize->add_setting('footer_address', array(
+        'default'           => 'বসিলা, মুহাম্মদপুর, ঢাকা।',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    
+    $wp_customize->add_control('footer_address', array(
+        'label'   => __('Address', 'nqa'),
+        'section' => 'footer_contact_section',
+        'type'    => 'text',
+    ));
+    
+    $wp_customize->add_setting('footer_phone_label', array(
+        'default'           => 'ফোন নং:',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    
+    $wp_customize->add_control('footer_phone_label', array(
+        'label'   => __('Phone Label', 'nqa'),
+        'section' => 'footer_contact_section',
+        'type'    => 'text',
+    ));
+    
+    $wp_customize->add_setting('footer_phone', array(
+        'default'           => '+8801700946569',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    
+    $wp_customize->add_control('footer_phone', array(
+        'label'   => __('Phone Number', 'nqa'),
+        'section' => 'footer_contact_section',
+        'type'    => 'text',
+    ));
+    
+    $wp_customize->add_setting('footer_email_label', array(
+        'default'           => 'ইমেইল:',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    
+    $wp_customize->add_control('footer_email_label', array(
+        'label'   => __('Email Label', 'nqa'),
+        'section' => 'footer_contact_section',
+        'type'    => 'text',
+    ));
+    
+    $wp_customize->add_setting('footer_email', array(
+        'default'           => 'nurulquran887@gmail.com',
+        'sanitize_callback' => 'sanitize_email',
+    ));
+    
+    $wp_customize->add_control('footer_email', array(
+        'label'   => __('Email', 'nqa'),
+        'section' => 'footer_contact_section',
+        'type'    => 'email',
+    ));
+    
+    $wp_customize->add_setting('footer_complaint_text', array(
+        'default'           => 'অভিযোগ বাক্স',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    
+    $wp_customize->add_control('footer_complaint_text', array(
+        'label'   => __('Complaint Box Text', 'nqa'),
+        'section' => 'footer_contact_section',
+        'type'    => 'text',
+    ));
+    
+    $wp_customize->add_setting('footer_complaint_url', array(
+        'default'           => '#complaints',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    
+    $wp_customize->add_control('footer_complaint_url', array(
+        'label'   => __('Complaint Box URL', 'nqa'),
+        'section' => 'footer_contact_section',
+        'type'    => 'url',
+    ));
+    
+    // --- Social Media Section ---
+    $wp_customize->add_section('footer_social_section', array(
+        'title'       => __('Social Media', 'nqa'),
+        'description' => __('Add your social media profile links.', 'nqa'),
+        'panel'       => 'footer_panel',
+        'priority'    => 30,
+    ));
+    
+    $wp_customize->add_setting('footer_facebook', array(
+        'default'           => '#',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    
+    $wp_customize->add_control('footer_facebook', array(
+        'label'   => __('Facebook URL', 'nqa'),
+        'section' => 'footer_social_section',
+        'type'    => 'url',
+    ));
+    
+    $wp_customize->add_setting('footer_whatsapp', array(
+        'default'           => '#',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    
+    $wp_customize->add_control('footer_whatsapp', array(
+        'label'   => __('WhatsApp URL', 'nqa'),
+        'section' => 'footer_social_section',
+        'type'    => 'url',
+    ));
+    
+    $wp_customize->add_setting('footer_linkedin', array(
+        'default'           => '#',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    
+    $wp_customize->add_control('footer_linkedin', array(
+        'label'   => __('LinkedIn URL', 'nqa'),
+        'section' => 'footer_social_section',
+        'type'    => 'url',
+    ));
+    
+    $wp_customize->add_setting('footer_youtube', array(
+        'default'           => '#',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    
+    $wp_customize->add_control('footer_youtube', array(
+        'label'   => __('YouTube URL', 'nqa'),
+        'section' => 'footer_social_section',
+        'type'    => 'url',
+    ));
+    
+    // --- Styling Section ---
+    $wp_customize->add_section('footer_styling_section', array(
+        'title'       => __('Footer Styling', 'nqa'),
+        'description' => __('Customize footer appearance and colors.', 'nqa'),
+        'panel'       => 'footer_panel',
+        'priority'    => 40,
+    ));
+    
+    $wp_customize->add_setting('footer_bg_color', array(
+        'default'           => '#f8f5ec',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'footer_bg_color', array(
+        'label'   => __('Footer Background Color', 'nqa'),
+        'section' => 'footer_styling_section',
+    )));
+
+    // Footer Bottom Image
+    $wp_customize->add_setting('show_footer_bottom_image', array(
+        'default'           => true,
+        'sanitize_callback' => 'wp_validate_boolean',
+    ));
+
+    $wp_customize->add_control('show_footer_bottom_image', array(
+        'label'   => __('Show Footer Bottom Image', 'nqa'),
+        'section' => 'footer_styling_section',
+        'type'    => 'checkbox',
+    ));
+
+    $wp_customize->add_setting('footer_bottom_image', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'footer_bottom_image', array(
+        'label'       => __('Footer Bottom Background Image', 'nqa'),
+        'description' => __('Upload decorative background image for footer bottom section', 'nqa'),
+        'section'     => 'footer_styling_section',
+    )));
+}
+add_action('customize_register', 'nqa_footer_customizer');

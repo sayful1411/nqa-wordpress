@@ -56,3 +56,15 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+// Dynamic Menu Title
+function nqa_get_menu_name( $theme_location, $fallback = '' ) {
+    $locations = get_nav_menu_locations();
+    
+    if ( ! isset( $locations[ $theme_location ] ) ) {
+        return $fallback;
+    }
+    
+    $menu_object = wp_get_nav_menu_object( $locations[ $theme_location ] );
+    
+    return $menu_object ? $menu_object->name : $fallback;
+}
