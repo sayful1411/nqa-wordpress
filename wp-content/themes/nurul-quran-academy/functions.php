@@ -68,3 +68,48 @@ function nqa_get_menu_name( $theme_location, $fallback = '' ) {
     
     return $menu_object ? $menu_object->name : $fallback;
 }
+
+
+/**
+ * Include the TGM Plugin Activation class.
+ */
+require_once get_template_directory() . '/inc/class-tgm-plugin-activation.php';
+
+/**
+ * Register required and recommended plugins for this theme.
+ */
+add_action( 'tgmpa_register', 'nqa_register_required_plugins' );
+
+function nqa_register_required_plugins() {
+
+    $plugins = [
+        [
+            'name'     => 'Advanced Custom Fields',
+            'slug'     => 'advanced-custom-fields',
+            'required' => true,
+        ],
+        [
+            'name'     => 'SVG Support',
+            'slug'     => 'svg-support',
+            'required' => false,
+        ],
+        [
+            'name'     => 'Classic Editor',
+            'slug'     => 'classic-editor',
+            'required' => false,
+        ],
+    ];
+
+    $config = [
+        'id'           => 'nqa', // Unique ID for hashing notices.
+        'default_path' => '',        // Leave empty to pull from WP.org
+        'menu'         => 'tgmpa-install-plugins', // Admin menu slug
+        'has_notices'  => true,      // Show admin notices
+        'dismissable'  => true,      // Allow user to dismiss notice
+        'dismiss_msg'  => '',        // Optional message before the plugins table
+        'is_automatic' => false,     // Automatically activate after install?
+        'message'      => '<p>This theme requires or recommends the following plugins to work properly.</p>',
+    ];
+
+    tgmpa( $plugins, $config );
+}
