@@ -123,3 +123,41 @@ function nurul_quran_academy_widgets_init() {
 	);
 }
 add_action( 'widgets_init', 'nurul_quran_academy_widgets_init' );
+
+// Create Default Page
+function nurul_quran_academy_setup_homepage() {
+    $home_title = 'Home';
+
+    // Query for the page titled “Home”
+    $query = new WP_Query([
+        'post_type'              => 'page',
+        'title'                  => $home_title,
+        'post_status'            => 'any',       // or 'publish' if you prefer
+        'posts_per_page'         => 1,
+        'no_found_rows'          => true,
+        'ignore_sticky_posts'    => true,
+        'update_post_term_cache' => false,
+        'update_post_meta_cache' => false,
+        'orderby'                => 'ID',
+        'order'                  => 'ASC',
+    ]);
+
+    if ( $query->have_posts() ) {
+        $home_page_id = $query->posts[0]->ID;
+    } else {
+        $home_page_id = wp_insert_post([
+            'post_title'   => $home_title,
+            'post_content' => '',
+            'post_status'  => 'publish',
+            'post_type'    => 'page',
+        ]);
+    }
+
+    // Set as front page
+    update_option('show_on_front', 'page');
+    update_option('page_on_front', $home_page_id);
+
+    update_post_meta($home_page_id, '_wp_page_template', 'front-page.php');
+}
+add_action('after_switch_theme', 'nurul_quran_academy_setup_homepage');
+
