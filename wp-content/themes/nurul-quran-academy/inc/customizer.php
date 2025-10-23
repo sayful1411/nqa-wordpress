@@ -648,3 +648,90 @@ function nqa_testimonial_customizer($wp_customize){
     ));
 }
 add_action('customize_register', 'nqa_testimonial_customizer');
+
+/**
+ * Admission Banner Customizer
+ */
+function nqa_admission_banner_customizer($wp_customize){
+	// Admission Banner Section
+	$wp_customize->add_section('nqa_admission_banner_section', array(
+		'title' => 'Admission Banner',
+		'priority' => 36,
+	));
+
+	// Show/Hide Banner
+	$wp_customize->add_setting('nqa_admission_banner_display', array(
+		'default' => true,
+		'sanitize_callback' => 'rest_sanitize_boolean',
+	));
+
+	$wp_customize->add_control('nqa_admission_banner_display', array(
+		'label' => 'Show Admission Banner',
+		'section' => 'nqa_admission_banner_section',
+		'type' => 'checkbox',
+	));
+
+	// Banner Title Line 1
+	$wp_customize->add_setting('nqa_admission_banner_title_line1', array(
+		'default' => 'ছোটদের কোরআন শিক্ষা কোর্সে',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+
+	$wp_customize->add_control('nqa_admission_banner_title_line1', array(
+		'label' => 'Title Line 1',
+		'section' => 'nqa_admission_banner_section',
+		'type' => 'text',
+	));
+
+	// Banner Title Line 2
+	$wp_customize->add_setting('nqa_admission_banner_title_line2', array(
+		'default' => 'ভর্তি চলছে!',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+
+	$wp_customize->add_control('nqa_admission_banner_title_line2', array(
+		'label' => 'Title Line 2',
+		'section' => 'nqa_admission_banner_section',
+		'type' => 'text',
+	));
+
+	// Button Text
+	$wp_customize->add_setting('nqa_admission_banner_button_text', array(
+		'default' => 'ক্লিক করুন',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+
+	$wp_customize->add_control('nqa_admission_banner_button_text', array(
+		'label' => 'Button Text',
+		'section' => 'nqa_admission_banner_section',
+		'type' => 'text',
+	));
+
+	// Button Link
+	$wp_customize->add_setting('nqa_admission_banner_button_link', array(
+		'default' => '#',
+		'sanitize_callback' => 'esc_url_raw',
+	));
+
+	$wp_customize->add_control('nqa_admission_banner_button_link', array(
+		'label' => 'Button Link',
+		'section' => 'nqa_admission_banner_section',
+		'type' => 'url',
+	));
+
+	// Background Color
+	$wp_customize->add_setting('nqa_admission_banner_bg_color', array(
+		'default' => '#9b1b40',
+		'sanitize_callback' => 'sanitize_hex_color',
+	));
+
+	$wp_customize->add_control(new WP_Customize_Color_Control(
+        $wp_customize, 
+        'nqa_admission_banner_bg_color', 
+        array(
+            'label' => 'Background Color',
+            'section' => 'nqa_admission_banner_section',
+        )
+    ));
+}
+add_action('customize_register', 'nqa_admission_banner_customizer');
