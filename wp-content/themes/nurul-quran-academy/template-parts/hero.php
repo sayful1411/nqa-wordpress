@@ -48,7 +48,7 @@
           </div>
           <div class="flex items-center gap-3 text-center" role="listitem">
             <?php 
-              $icon2 = get_field('stat_1_icon');
+              $icon2 = get_field('stat_2_icon');
               $icon2_url = $icon2 ? esc_url($icon2) : get_template_directory_uri() . '/assets/images/student.svg';
             ?>
             <img class="w-[38px] h-[38px] flex-shrink-0" src="<?php echo $icon2_url; ?>" alt="<?php esc_attr_e(the_field('stat_2_label'), 'nqa'); ?>" />
@@ -59,7 +59,7 @@
           </div>
           <div class="flex items-center gap-3 text-center" role="listitem">
             <?php 
-              $icon3 = get_field('stat_1_icon');
+              $icon3 = get_field('stat_3_icon');
               $icon3_url = $icon3 ? esc_url($icon3) : get_template_directory_uri() . '/assets/images/student.svg';
             ?>
             <img class="w-[38px] h-[38px] flex-shrink-0" src="<?php echo $icon3_url; ?>" alt="<?php esc_attr_e(the_field('stat_3_label'), 'nqa'); ?>" />
