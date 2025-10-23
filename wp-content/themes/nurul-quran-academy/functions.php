@@ -43,6 +43,11 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/post-types.php';
 
 /**
+ * Custom Meta Boxes
+ */
+require get_template_directory() . '/inc/meta-boxes.php';
+
+/**
  * Custom Walker
  */
 require get_template_directory() . '/inc/dropdown-walker.php';

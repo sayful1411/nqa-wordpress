@@ -806,3 +806,91 @@ function nqa_feedback_customizer($wp_customize) {
 }
 add_action('customize_register', 'nqa_feedback_customizer');
 
+/**
+ * Teacher Customizer
+ */
+function nqa_teacher_customize( $wp_customize ) {
+
+    // Panel or Section
+    $wp_customize->add_section( 'nqa_teacher_section', array(
+        'title'       => __( 'Teacher Section', 'nqa' ),
+        'description' => __( 'Customize the teacher section on homepage.', 'nqa' ),
+        'priority'    => 38,
+    ) );
+
+    // Show/Hide Teacher
+	$wp_customize->add_setting('nqa_teacher_section_display', array(
+		'default' => true,
+		'sanitize_callback' => 'rest_sanitize_boolean',
+	));
+
+	$wp_customize->add_control('nqa_teacher_section_display', array(
+		'label' => 'Show Teacher Section',
+		'section' => 'nqa_teacher_section',
+		'type' => 'checkbox',
+	));
+
+    // Heading text
+    $wp_customize->add_setting('nqa_teacher_heading', array(
+        'default' => 'আমাদের <span class="text-gradient bg-clip-text text-transparent">অভিজ্ঞ</span> শিক্ষকবৃন্দ',
+        'sanitize_callback' => 'wp_kses_post', // Allows safe HTML
+    ));
+
+	$wp_customize->add_control('nqa_teacher_heading', array(
+		'label' => 'Section Heading',
+        'description' => 'For gradient effect, use: &lt;span class=&quot;text-gradient bg-clip-text text-transparent&quot;&gt;text&lt;/span&gt;',
+        'section' => 'nqa_teacher_section',
+        'type' => 'textarea',
+	));
+
+    // Background color
+    $wp_customize->add_setting( 'nqa_teacher_bg_color', array(
+        'default'           => '#fffcf8',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control(
+        $wp_customize,
+        'nqa_teacher_bg_color',
+        array(
+            'label'    => __( 'Background Color', 'nqa' ),
+            'section'  => 'nqa_teacher_section',
+            'settings' => 'nqa_teacher_bg_color',
+        )
+    ) );
+
+    // Background image
+    $wp_customize->add_setting( 'nqa_teacher_bg_image', array(
+        'default'           => get_template_directory_uri() . '/assets/images/testimonial-bg.png',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Image_Control(
+        $wp_customize,
+        'nqa_teacher_bg_image',
+        array(
+            'label'    => __( 'Background Image', 'nqa' ),
+            'section'  => 'nqa_teacher_section',
+            'settings' => 'nqa_teacher_bg_image',
+        )
+    ) );
+
+    // Teachers per page
+    $wp_customize->add_setting('nqa_teacher_per_page', array(
+        'default' => 6,
+        'sanitize_callback' => 'absint',
+    ));
+
+    $wp_customize->add_control('nqa_teacher_per_page', array(
+        'label' => 'Number of Teachers to Display',
+        'section' => 'nqa_teacher_section',
+        'type' => 'select',
+        'choices' => array(
+            '3' => '3 Teachers',
+            '4' => '4 Teachers',
+            '5' => '5 Teachers',
+            '6' => '6 Teachers',
+        ),
+    ));
+}
+add_action( 'customize_register', 'nqa_teacher_customize' );
