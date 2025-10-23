@@ -1235,3 +1235,78 @@ function nqa_faq_customizer($wp_customize) {
     ));
 }
 add_action('customize_register', 'nqa_faq_customizer');
+
+/**
+ * Tutorial CTA Customizer
+ */
+function nqa_tutorial_cta_customizer($wp_customize){
+	// Tutorial CTA Section
+	$wp_customize->add_section('nqa_tutorial_cta_section', array(
+		'title' => 'Tutorial CTA',
+		'priority' => 40,
+	));
+
+	// Show/Hide Tutorial
+	$wp_customize->add_setting('nqa_tutorial_cta_display', array(
+		'default' => true,
+		'sanitize_callback' => 'rest_sanitize_boolean',
+	));
+
+	$wp_customize->add_control('nqa_tutorial_cta_display', array(
+		'label' => 'Show Tutorial CTA',
+		'section' => 'nqa_tutorial_cta_section',
+		'type' => 'checkbox',
+	));
+
+	// Tutorial CTA Title
+	$wp_customize->add_setting('nqa_tutorial_cta_title', array(
+		'default' => 'কীভাবে login করতে হবে জানুন',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+
+	$wp_customize->add_control('nqa_tutorial_cta_title', array(
+		'label' => 'Tutorial CTA Title',
+		'section' => 'nqa_tutorial_cta_section',
+		'type' => 'text',
+	));
+
+	// Button Text
+	$wp_customize->add_setting('nqa_tutorial_cta_button_text', array(
+		'default' => 'ক্লিক করুন',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+
+	$wp_customize->add_control('nqa_tutorial_cta_button_text', array(
+		'label' => 'Button Text',
+		'section' => 'nqa_tutorial_cta_section',
+		'type' => 'text',
+	));
+
+	// Button Link
+	$wp_customize->add_setting('nqa_tutorial_cta_button_link', array(
+		'default' => '#',
+		'sanitize_callback' => 'esc_url_raw',
+	));
+
+	$wp_customize->add_control('nqa_tutorial_cta_button_link', array(
+		'label' => 'Button Link',
+		'section' => 'nqa_tutorial_cta_section',
+		'type' => 'url',
+	));
+
+    // Background Image
+    $wp_customize->add_setting('nqa_tutorial_cta_bg_image', array(
+        'default' => get_template_directory_uri() . '/assets/images/tutorial.svg',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    
+    $wp_customize->add_control(new WP_Customize_Image_Control(
+        $wp_customize, 
+        'nqa_tutorial_cta_bg_image',
+        array(
+            'label' => 'Background Image',
+            'section' => 'nqa_tutorial_cta_section',
+        )
+    ));
+}
+add_action('customize_register', 'nqa_tutorial_cta_customizer');
