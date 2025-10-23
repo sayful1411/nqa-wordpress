@@ -364,7 +364,7 @@ add_action( 'acf/include_fields', function() {
 				'class' => '',
 				'id' => '',
 			),
-			'default_value' => '',
+			'default_value' => '৮৯%',
 			'maxlength' => '',
 			'allow_in_bindings' => 1,
 			'placeholder' => '',
