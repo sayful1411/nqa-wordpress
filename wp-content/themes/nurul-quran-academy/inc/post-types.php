@@ -111,3 +111,32 @@ function nqa_features_cpt() {
     register_post_type( 'feature', $args );
 }
 add_action( 'init', 'nqa_features_cpt' );
+
+// FAQ Custom Post Type
+function nqa_faq_cpt() {
+    $labels = array(
+        'name'               => __( 'FAQs', 'nqa' ),
+        'singular_name'      => __( 'FAQ', 'nqa' ),
+        'add_new'            => __( 'Add New FAQ', 'nqa' ),
+        'add_new_item'       => __( 'Add New FAQ', 'nqa' ),
+        'edit_item'          => __( 'Edit FAQ', 'nqa' ),
+        'new_item'           => __( 'New FAQ', 'nqa' ),
+        'view_item'          => __( 'View FAQ', 'nqa' ),
+        'search_items'       => __( 'Search FAQs', 'nqa' ),
+        'not_found'          => __( 'No FAQs found', 'nqa' ),
+        'menu_name'          => __( 'FAQs', 'nqa' ),
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'menu_icon'          => 'dashicons-editor-help',
+        'supports'           => array( 'title', 'editor' ), // title = question, editor = answer
+        'has_archive'        => false,
+        'rewrite'            => array( 'slug' => 'faq' ),
+        'show_in_rest'       => true, // Gutenberg support
+    );
+
+    register_post_type( 'faq', $args );
+}
+add_action( 'init', 'nqa_faq_cpt' );

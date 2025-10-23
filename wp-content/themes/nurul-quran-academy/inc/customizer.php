@@ -1199,3 +1199,39 @@ function nqa_offer_cta_customizer($wp_customize){
     ));
 }
 add_action('customize_register', 'nqa_offer_cta_customizer');
+
+/**
+ * FAQ Customizer
+ */
+function nqa_faq_customizer($wp_customize) {
+    $wp_customize->add_section('nqa_faqs_section', array(
+        'title' => 'FAQs Section',
+        'priority' => 41,
+    ));
+
+    // Show/Hide FAQ
+	$wp_customize->add_setting('nqa_faq_display', array(
+		'default' => true,
+		'sanitize_callback' => 'rest_sanitize_boolean',
+	));
+
+	$wp_customize->add_control('nqa_faq_display', array(
+		'label' => 'Show FAQ Section',
+		'section' => 'nqa_faqs_section',
+		'type' => 'checkbox',
+	));
+    
+    // Heading with HTML support
+    $wp_customize->add_setting('nqa_faq_heading', array(
+        'default' => '<span class="text-gradient bg-clip-text text-transparent">প্রশ্নোত্তর</span> সবাই জানতে চান',
+        'sanitize_callback' => 'wp_kses_post', // Allows safe HTML
+    ));
+    
+    $wp_customize->add_control('nqa_faq_heading', array(
+        'label' => 'Section Heading',
+        'description' => 'For gradient effect, use: &lt;span class=&quot;text-gradient bg-clip-text text-transparent&quot;&gt;text&lt;/span&gt;',
+        'section' => 'nqa_faqs_section',
+        'type' => 'textarea',
+    ));
+}
+add_action('customize_register', 'nqa_faq_customizer');
