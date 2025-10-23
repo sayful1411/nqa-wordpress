@@ -517,3 +517,134 @@ function nqa_footer_customizer($wp_customize) {
     )));
 }
 add_action('customize_register', 'nqa_footer_customizer');
+
+/**
+ * Testimonial Customizer 
+ */
+function nqa_testimonial_customizer($wp_customize){
+	$wp_customize->add_section('nqa_testimonials_section', array(
+		'title' => 'Testimonials Section',
+		'priority' => 35
+	));
+
+    // Show/Hide Testimonial
+	$wp_customize->add_setting('nqa_testimonial_section_display', array(
+		'default' => true,
+		'sanitize_callback' => 'rest_sanitize_boolean',
+	));
+
+	$wp_customize->add_control('nqa_testimonial_section_display', array(
+		'label' => 'Show Testimonial Section',
+		'section' => 'nqa_testimonials_section',
+		'type' => 'checkbox',
+	));
+
+	// Heading
+	$wp_customize->add_setting('nqa_testimonial_heading', array(
+        'default' => 'বিজ্ঞজন আমাদের কাজের <span class="text-gradient bg-clip-text text-transparent">প্রশংসা করেছেন !!</span>',
+        'sanitize_callback' => 'wp_kses_post', // Allows safe HTML
+    ));
+
+	$wp_customize->add_control('nqa_testimonial_heading', array(
+		'label' => 'Section Heading',
+        'description' => 'For gradient effect, use: &lt;span class=&quot;text-gradient bg-clip-text text-transparent&quot;&gt;text&lt;/span&gt;',
+        'section' => 'nqa_testimonials_section',
+        'type' => 'textarea',
+	));
+
+	// Description
+	$wp_customize->add_setting('nqa_testimonial_description', array(
+        'default' => 'আলহামদুলিল্লাহ, নুরুল কোরআন অ্যাকাডেমি ইমসলামের বর্তা সহীহভাবে পৌঁছে দেয়ার জন্য যা করছে তা খুবই প্রশংসনীয়, এবং এই ডিজিটাল যুগে আমাদেরকে ইসলামকে মানুষের কাছে পৌঁছাতে হবে ডিজিটালভাবে, যা এই প্রতিষ্ঠান সফলতার সাথে করে আসছে।',
+        'sanitize_callback' => 'wp_kses_post', // Allows safe HTML
+    ));
+
+	$wp_customize->add_control('nqa_testimonial_description', array(
+		'label' => 'Description',
+        'description' => '',
+        'section' => 'nqa_testimonials_section',
+        'type' => 'textarea',
+	));
+
+	// Video Thumbnail
+    $wp_customize->add_setting('nqa_testimonial_video_image', array(
+        'default' => get_template_directory_uri() . '/assets/images/testimonial-1.png',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    
+    $wp_customize->add_control(new WP_Customize_Image_Control(
+        $wp_customize, 
+        'nqa_testimonial_video_image', 
+        array(
+            'label' => 'Video Thumbnail',
+            'section' => 'nqa_testimonials_section',
+        )
+    ));
+    
+    // Video URL
+    $wp_customize->add_setting('nqa_testimonial_video_url', array(
+        'default' => '#',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    
+    $wp_customize->add_control('nqa_testimonial_video_url', array(
+        'label' => 'Video URL',
+        'description' => 'YouTube or video file URL',
+        'section' => 'nqa_testimonials_section',
+        'type' => 'url',
+    ));
+    
+    // Author Image
+    $wp_customize->add_setting('nqa_testimonial_author_image', array(
+        'default' => get_template_directory_uri() . '/assets/images/ahmudullah.png',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    
+    $wp_customize->add_control(new WP_Customize_Image_Control(
+        $wp_customize, 
+        'nqa_testimonial_author_image', 
+        array(
+            'label' => 'Author Image',
+            'section' => 'nqa_testimonials_section',
+        )
+    ));
+    
+    // Author Name
+    $wp_customize->add_setting('nqa_testimonial_author_name', array(
+        'default' => 'শায়খ আহমাদুল্লাহ',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    
+    $wp_customize->add_control('nqa_testimonial_author_name', array(
+        'label' => 'Author Name',
+        'section' => 'nqa_testimonials_section',
+        'type' => 'text',
+    ));
+    
+    // Author Title
+    $wp_customize->add_setting('nqa_testimonial_author_title', array(
+        'default' => 'চেয়ারম্যান, আস-সুন্নাহ ফাউন্ডেশন',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    
+    $wp_customize->add_control('nqa_testimonial_author_title', array(
+        'label' => 'Author Title',
+        'section' => 'nqa_testimonials_section',
+        'type' => 'text',
+    ));
+
+	// Background Color
+	$wp_customize->add_setting('nqa_testimonial_bg_color', array(
+		'default' => '#f8fffc',
+		'sanitize_callback' => 'sanitize_hex_color',
+	));
+
+	$wp_customize->add_control(new WP_Customize_Color_Control(
+        $wp_customize, 
+        'nqa_testimonial_bg_color', 
+        array(
+            'label' => 'Background Color',
+            'section' => 'nqa_testimonials_section',
+        )
+    ));
+}
+add_action('customize_register', 'nqa_testimonial_customizer');
