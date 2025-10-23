@@ -974,3 +974,54 @@ function nqa_learning_path_customizer($wp_customize) {
     ));
 }
 add_action('customize_register', 'nqa_learning_path_customizer');
+
+/**
+ * Feature Customizer
+ */
+function nqa_feature_customizer($wp_customize) {
+    $wp_customize->add_section('nqa_feature_section', array(
+        'title' => 'Features Section',
+        'priority' => 40,
+    ));
+
+    // Show/Hide Feature
+	$wp_customize->add_setting('nqa_feature_display', array(
+		'default' => true,
+		'sanitize_callback' => 'rest_sanitize_boolean',
+	));
+
+	$wp_customize->add_control('nqa_feature_display', array(
+		'label' => 'Show Feature Section',
+		'section' => 'nqa_feature_section',
+		'type' => 'checkbox',
+	));
+    
+    // Heading with HTML support
+    $wp_customize->add_setting('nqa_feature_heading', array(
+        'default' => 'নূরুল কুরআন একাডেমিতে <br/> <span class="text-gradient bg-clip-text text-transparent">আপনি যা পাচ্ছেন</span>',
+        'sanitize_callback' => 'wp_kses_post', // Allows safe HTML
+    ));
+    
+    $wp_customize->add_control('nqa_feature_heading', array(
+        'label' => 'Section Heading',
+        'description' => 'For gradient effect, use: &lt;span class=&quot;text-gradient bg-clip-text text-transparent&quot;&gt;text&lt;/span&gt;',
+        'section' => 'nqa_feature_section',
+        'type' => 'textarea',
+    ));
+
+    // Feature Image
+    $wp_customize->add_setting('nqa_feature_image', array(
+        'default' => get_template_directory_uri() . '/assets/images/feature-frame-1.png',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    
+    $wp_customize->add_control(new WP_Customize_Image_Control(
+        $wp_customize, 
+        'nqa_feature_image',
+        array(
+            'label' => 'Feature Image',
+            'section' => 'nqa_feature_section',
+        )
+    ));
+}
+add_action('customize_register', 'nqa_feature_customizer');

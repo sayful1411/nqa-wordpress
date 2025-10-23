@@ -82,3 +82,32 @@ add_action( 'init', 'nqa_teachers_cpt' );
     register_post_type( 'course_step', $args );
 }
 add_action( 'init', 'register_course_step_cpt' );
+
+// Features Custom Post Type
+function nqa_features_cpt() {
+    $labels = array(
+        'name'               => __( 'Features', 'nqa' ),
+        'singular_name'      => __( 'Feature', 'nqa' ),
+        'add_new'            => __( 'Add New Feature', 'nqa' ),
+        'add_new_item'       => __( 'Add New Feature', 'nqa' ),
+        'edit_item'          => __( 'Edit Feature', 'nqa' ),
+        'new_item'           => __( 'New Feature', 'nqa' ),
+        'view_item'          => __( 'View Feature', 'nqa' ),
+        'search_items'       => __( 'Search Features', 'nqa' ),
+        'not_found'          => __( 'No Features found', 'nqa' ),
+        'menu_name'          => __( 'Features', 'nqa' ),
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'menu_icon'          => 'dashicons-feedback',
+        'supports'           => array( 'title', 'thumbnail', 'editor' ),
+        'has_archive'        => false,
+        'rewrite'            => array( 'slug' => 'feature' ),
+        'show_in_rest'       => true,
+    );
+
+    register_post_type( 'feature', $args );
+}
+add_action( 'init', 'nqa_features_cpt' );

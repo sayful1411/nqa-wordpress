@@ -33,7 +33,7 @@
                             <img class="absolute bottom-4 right-4 w-[25px] h-[52px]" src="<?php echo get_template_directory_uri(); ?>/assets/images/qutation.svg"
                                 alt="<?php esc_attr_e('উদ্ধৃতি চিহ্ন', 'nqa'); ?>" aria-hidden="true" />
                             <blockquote class="text-primary text-body leading-[150%] font-normal m-0 flex-1">
-                                <?php the_content(); ?>
+                                <?php echo esc_html_e(get_the_content(), 'nqa'); ?>
                             </blockquote>
                             <div class="flex items-center gap-4 mt-auto">
                                 <div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
