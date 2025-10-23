@@ -1310,3 +1310,177 @@ function nqa_tutorial_cta_customizer($wp_customize){
     ));
 }
 add_action('customize_register', 'nqa_tutorial_cta_customizer');
+
+// Global Settings
+function nqa_global_settings_customize( $wp_customize ) {
+    /**
+     * ============================
+     *  PANEL: Global Theme Options
+     * ============================
+     */
+    $wp_customize->add_panel( 'nqa_global_panel', array(
+        'title'       => __( 'Theme Options', 'nqa' ),
+        'description' => __( 'Customize global colors and typography.', 'nqa' ),
+        'priority'    => 10,
+    ) );
+
+    /**
+     * ============================
+     * SECTION: Colors
+     * ============================
+     */
+    $wp_customize->add_section( 'nqa_colors_section', array(
+        'title'    => __( 'Colors', 'nqa' ),
+        'panel'    => 'nqa_global_panel',
+        'priority' => 10,
+    ) );
+
+    // Brand Color
+    $wp_customize->add_setting( 'nqa_color_brand', array(
+        'default'   => '#9e2447',
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Color_Control( 
+        $wp_customize, 
+        'color_brand_control', 
+        array(
+            'label'    => __( 'Brand Color', 'nqa' ),
+            'section'  => 'nqa_colors_section',
+            'settings' => 'nqa_color_brand',
+        ) 
+    ));
+
+    // Text Colors
+    $text_colors = [
+        'nqa_color_primary'   => __( 'Primary Color', 'nqa' ),
+        'nqa_color_secondary' => __( 'Secondary Color', 'nqa' ),
+        'nqa_color_muted'     => __( 'Muted Color', 'nqa' ),
+    ];
+    foreach ( $text_colors as $id => $label ) {
+        $wp_customize->add_setting( $id, array(
+            'default'   => ($id === 'nqa_color_primary') ? '#121111' : (($id === 'nqa_color_secondary') ? '#535966' : '#f0f0f0'),
+            'transport' => 'refresh',
+        ) );
+        $wp_customize->add_control( new WP_Customize_Color_Control( 
+            $wp_customize, 
+            "{$id}_control", 
+            array(
+                'label'    => $label,
+                'section'  => 'nqa_colors_section',
+                'settings' => $id,
+            ) 
+        ));
+    }
+
+    // Gradient Colors
+    $wp_customize->add_setting( 'nqa_gradient_title', array(
+        'default'   => 'linear-gradient(90deg, #df186a, #fa6f21)',
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'gradient_title_control', array(
+        'label'    => __( 'Title Gradient', 'nqa' ),
+        'section'  => 'nqa_colors_section',
+        'settings' => 'nqa_gradient_title',
+        'type'    => 'select',
+        'choices' => array(
+            'linear-gradient(90deg, #df186a 0%, #fa6f21 100%)' => __( 'Pink → Orange', 'nqa' ),
+            'linear-gradient(90deg, #29a0b6 0%, #b0c343 100%)' => __( 'Blue → Lime', 'nqa' ),
+            'linear-gradient(90deg, #673AB7 0%, #E91E63 100%)' => __( 'Purple → Pink', 'nqa' ),
+        ),
+    ) );
+
+    $wp_customize->add_setting( 'nqa_gradient_border', array(
+        'default'   => 'linear-gradient(103deg, #29a0b6 0%, #b0c343 100%)',
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'gradient_border_control', array(
+        'label'    => __( 'Border Gradient', 'nqa' ),
+        'section'  => 'nqa_colors_section',
+        'settings' => 'nqa_gradient_border',
+        'type'    => 'select',
+        'choices' => array(
+            'linear-gradient(90deg, #df186a 0%, #fa6f21 100%)' => __( 'Pink → Orange', 'nqa' ),
+            'linear-gradient(90deg, #29a0b6 0%, #b0c343 100%)' => __( 'Blue → Lime', 'nqa' ),
+            'linear-gradient(90deg, #673AB7 0%, #E91E63 100%)' => __( 'Purple → Pink', 'nqa' ),
+        ),
+    ) );
+
+    /** ============================
+     * SECTION: Typography
+     * ============================ */
+    $wp_customize->add_section( 'nqa_typography_section', array(
+        'title'    => __( 'Typography', 'nqa' ),
+        'panel'    => 'nqa_global_panel',
+        'priority' => 20,
+    ) );
+
+    /* ============================
+    * Font Families (Select Dropdowns)
+    * ============================ */
+    $font_choices = [
+        '"Noto Serif Bengali", Helvetica'                 => 'Noto Serif Bengali',
+        '"Li M. A. Hai Unicode", Helvetica, sans-serif'   => 'Li M. A. Hai Unicode',
+        '"Poppins", sans-serif'                           => 'Poppins',
+        '"Inter", sans-serif'                             => 'Inter',
+        '"Roboto", sans-serif'                            => 'Roboto',
+        '"Open Sans", sans-serif'                         => 'Open Sans',
+        '"Playfair Display", serif'                       => 'Playfair Display',
+        '"Merriweather", serif'                           => 'Merriweather',
+    ];
+
+    $wp_customize->add_setting( 'nqa_custom_font', [
+        'default'   => '"Noto Serif Bengali", Helvetica',
+        'transport' => 'refresh',
+    ]);
+
+    $wp_customize->add_control( 'nqa_custom_font', [
+        'label'   => __('Font Family', 'nqa'),
+        'section' => 'nqa_typography_section',
+        'settings'=> 'nqa_custom_font',
+        'type'    => 'select',
+        'choices' => $font_choices,
+    ]);
+
+
+    /* ============================
+    * Font Sizes
+    * ============================ */
+   // Add label before font size controls
+    $wp_customize->add_setting( 'nqa_font_size_heading', [
+        'sanitize_callback' => 'sanitize_text_field',
+    ] );
+
+    $wp_customize->add_control( new WP_Customize_Control(
+        $wp_customize,
+        'nqa_font_size_heading',
+        [
+            'label'       => __( 'Font Size', 'nqa' ),
+            'section'     => 'nqa_typography_section',
+            'type'        => 'hidden',
+        ]
+    ));
+
+    $font_sizes = array(
+        '5xl' => array( 'label' => __( 'H1', 'nqa' ), 'default' => '48px' ),
+        '4xl' => array( 'label' => __( 'H2', 'nqa' ), 'default' => '40px' ),
+        '3xl' => array( 'label' => __( 'H3', 'nqa' ), 'default' => '33px' ),
+        '2xl' => array( 'label' => __( 'H4', 'nqa' ), 'default' => '28px' ),
+        'xl'  => array( 'label' => __( 'H5', 'nqa' ), 'default' => '23px' ),
+        'lg'  => array( 'label' => __( 'H6', 'nqa' ), 'default' => '19px' ),
+        'base'=> array( 'label' => __( 'Body', 'nqa' ), 'default' => '16px' ),
+    );
+
+    foreach ( $font_sizes as $key => $info ) {
+        $wp_customize->add_setting( "nqa_font_size_{$key}", array(
+            'default'   => $info['default'],
+            'transport' => 'refresh',
+        ));
+        $wp_customize->add_control( "nqa_font_size_{$key}", array(
+            'label'   => $info['label'],
+            'section' => 'nqa_typography_section',
+            'type'    => 'text',
+        ));
+    }
+
+}
+add_action( 'customize_register', 'nqa_global_settings_customize' );
