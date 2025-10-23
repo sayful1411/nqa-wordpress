@@ -38,6 +38,11 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
+ * Custom Post Types
+ */
+require get_template_directory() . '/inc/post-types.php';
+
+/**
  * Custom Walker
  */
 require get_template_directory() . '/inc/dropdown-walker.php';
