@@ -894,3 +894,83 @@ function nqa_teacher_customize( $wp_customize ) {
     ));
 }
 add_action( 'customize_register', 'nqa_teacher_customize' );
+
+/**
+ * Leaning Path Customizer
+ */ 
+function nqa_learning_path_customizer($wp_customize) {
+    $wp_customize->add_section('learning_path_section', array(
+        'title' => 'Learning Path Section',
+        'priority' => 39,
+    ));
+
+    // Show/Hide Feedback
+	$wp_customize->add_setting('nqa_learning_path_display', array(
+		'default' => true,
+		'sanitize_callback' => 'rest_sanitize_boolean',
+	));
+
+	$wp_customize->add_control('nqa_learning_path_display', array(
+		'label' => 'Show Learning Path Section',
+		'section' => 'learning_path_section',
+		'type' => 'checkbox',
+	));
+    
+    // Section Title
+    $wp_customize->add_setting('learning_path_title', array(
+        'default' => 'পর্যাক্রমে শিখুন আর এগিয়ে চলুন',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    
+    $wp_customize->add_control('learning_path_title', array(
+        'label' => 'Section Title',
+        'section' => 'learning_path_section',
+        'type' => 'text',
+    ));
+    
+    // Background Color 1 (Start)
+    $wp_customize->add_setting('learning_path_bg_color1', array(
+        'default' => '#250210',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    
+    $wp_customize->add_control(new WP_Customize_Color_Control(
+        $wp_customize, 
+        'learning_path_bg_color1',
+        array(
+            'label' => 'Background Color 1 (Start)',
+            'section' => 'learning_path_section',
+        )
+    ));
+    
+    // Background Color 2 (End)
+    $wp_customize->add_setting('learning_path_bg_color2', array(
+        'default' => '#9e2447',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    
+    $wp_customize->add_control(new WP_Customize_Color_Control(
+        $wp_customize, 
+        'learning_path_bg_color2',
+        array(
+            'label' => 'Background Color 2 (End)',
+            'section' => 'learning_path_section',
+        )
+    ));
+    
+    // Background Image
+    $wp_customize->add_setting('learning_path_bg_image', array(
+        'default' => get_template_directory_uri() . '/assets/images/bg-3.png',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    
+    $wp_customize->add_control(new WP_Customize_Image_Control(
+        $wp_customize, 
+        'learning_path_bg_image', 
+        array(
+            'label' => 'Background Image',
+            'section' => 'learning_path_section',
+        )
+    ));
+}
+add_action('customize_register', 'nqa_learning_path_customizer');
