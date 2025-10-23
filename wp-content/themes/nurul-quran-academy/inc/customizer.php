@@ -1094,3 +1094,108 @@ function nqa_blog_customizer($wp_customize) {
     ));
 }
 add_action('customize_register', 'nqa_blog_customizer');
+
+/**
+ * Offer CTA Customizer
+ */
+function nqa_offer_cta_customizer($wp_customize){
+	// Offer CTA Section
+	$wp_customize->add_section('nqa_offer_cta_section', array(
+		'title' => 'Offer CTA',
+		'priority' => 40,
+	));
+
+	// Show/Hide Offer CTA
+	$wp_customize->add_setting('nqa_offer_cta_display', array(
+		'default' => true,
+		'sanitize_callback' => 'rest_sanitize_boolean',
+	));
+
+	$wp_customize->add_control('nqa_offer_cta_display', array(
+		'label' => 'Show Offer CTA',
+		'section' => 'nqa_offer_cta_section',
+		'type' => 'checkbox',
+	));
+
+	// Offer CTA Title
+	$wp_customize->add_setting('nqa_offer_cta_title', array(
+		'default' => 'ইসলামী জ্ঞান অর্জনের মাধ্যমে আলোকিত করুন নিজের ভবিষ্যৎ',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+
+	$wp_customize->add_control('nqa_offer_cta_title', array(
+		'label' => 'Offer CTA Title',
+		'section' => 'nqa_offer_cta_section',
+		'type' => 'text',
+	));
+
+	// Button Text
+	$wp_customize->add_setting('nqa_offer_cta_button_text', array(
+		'default' => 'শেখা শুরু করুন',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+
+	$wp_customize->add_control('nqa_offer_cta_button_text', array(
+		'label' => 'Button Text',
+		'section' => 'nqa_offer_cta_section',
+		'type' => 'text',
+	));
+
+	// Button Link
+	$wp_customize->add_setting('nqa_offer_cta_button_link', array(
+		'default' => '#',
+		'sanitize_callback' => 'esc_url_raw',
+	));
+
+	$wp_customize->add_control('nqa_offer_cta_button_link', array(
+		'label' => 'Button Link',
+		'section' => 'nqa_offer_cta_section',
+		'type' => 'url',
+	));
+
+	// Background Color
+	$wp_customize->add_setting('nqa_offer_cta_bg_color', array(
+		'default' => '#fefefe',
+		'sanitize_callback' => 'sanitize_hex_color',
+	));
+
+	$wp_customize->add_control(new WP_Customize_Color_Control(
+        $wp_customize, 
+        'nqa_offer_cta_bg_color', 
+        array(
+            'label' => 'Background Color',
+            'section' => 'nqa_offer_cta_section',
+        )
+    ));
+
+    // Background Image
+    $wp_customize->add_setting('nqa_offer_cta_bg_image', array(
+        'default' => get_template_directory_uri() . '/assets/images/cta-02.png',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    
+    $wp_customize->add_control(new WP_Customize_Image_Control(
+        $wp_customize, 
+        'nqa_offer_cta_bg_image',
+        array(
+            'label' => 'Background Image',
+            'section' => 'nqa_offer_cta_section',
+        )
+    ));
+
+    // Offer CTA Image
+    $wp_customize->add_setting('nqa_offer_cta_mage', array(
+        'default' => get_template_directory_uri() . '/assets/images/cta-01.png',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    
+    $wp_customize->add_control(new WP_Customize_Image_Control(
+        $wp_customize, 
+        'nqa_offer_cta_mage',
+        array(
+            'label' => 'Offer CTA Image',
+            'section' => 'nqa_offer_cta_section',
+        )
+    ));
+}
+add_action('customize_register', 'nqa_offer_cta_customizer');
