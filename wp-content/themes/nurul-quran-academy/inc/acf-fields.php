@@ -353,7 +353,7 @@ add_action( 'acf/include_fields', function() {
 		array(
 			'key' => 'field_68e64ee64ca42',
 			'label' => 'Stat 3 Number',
-			'name' => '৮৯%',
+			'name' => 'stat_3_number',
 			'aria-label' => '',
 			'type' => 'text',
 			'instructions' => '',

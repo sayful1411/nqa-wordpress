@@ -9,50 +9,63 @@
         <div class="flex flex-col gap-3">
           <h2
             class="text-[clamp(24px,4vw,52px)] leading-[1.3] font-normal text-white m-0 text-left md:leading-[1.35]">
-            <span class="font-medium">ইসলামী জ্ঞানে <span class="font-li-hai">আলোকিত করুন নিজের ভবিষ্যৎ!</span></span>
+            <span class="font-medium"><?php echo wp_kses_post(get_field('hero_title')); ?></span>
           </h2>
           <p
             class="text-base leading-[1.6] text-white text-left m-0">
-            ইসলামী জ্ঞান অর্জনের এক অনন্য অনলাইন উদ্যোগ। যেখানে আরবী ভাষা ও সাহিত্যসহ কুরআন, হাদীস, ফিকহ ও
-            আকীদার উপর রয়েছে সুচিন্তিত পেইড ও ফ্রি কোর্সের আয়োজন।
+            <?php echo wp_kses_post(get_field('hero_description')); ?>
           </p>
         </div>
 
         <!-- CTA Button -->
-        <button
+        <?php if (get_field('hero_button_text')): ?>
+        <a href="<?php echo esc_url(get_field('hero_button_link')); ?>"
           class="bg-gradient-primary self-center inline-flex w-full h-12 items-center justify-center gap-2.5 px-6 py-2.5 border-none rounded-[50px] cursor-pointer transition-all duration-200 no-underline box-border hover:-translate-y-px hover:shadow-[0_4px_8px_rgba(0,0,0,0.2)] focus:outline-2 focus:outline-white focus:outline-offset-2 disabled:opacity-60 disabled:cursor-not-allowed md:self-start md:w-auto"
           type="button" aria-label="শেখা শুরু করুন - কোর্সে এনরোল করতে ক্লিক করুন">
-          <span class="font-medium text-white text-base leading-6 whitespace-nowrap">শেখা শুরু করুন</span>
+          <span class="font-medium text-white text-base leading-6 whitespace-nowrap"><?php echo the_field('hero_button_text'); ?></span>
           <img class="w-4 h-4 flex-shrink-0" src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow-right.svg" alt="<?php esc_attr_e('arrow-right', 'nqa') ?>" aria-hidden="true" />
-        </button>
+        </a>
+        <?php endif?>
       </div>
 
       <!-- Statistics section -->
       <div class="flex flex-col gap-4 mt-12" aria-labelledby="success-stats">
-        <h2 class="text-base leading-6 text-white text-left m-0 md:text-left" id="success-stats">বিগত
-          ৩ বছর ধরে আমাদের সাফল্য
+        <h2 class="text-base leading-6 text-white text-left m-0 md:text-left" id="success-stats">
+        <?php echo the_field('statistics_title'); ?>
         </h2>
         <div class="flex gap-4 items-center justify-start pb-8 md:flex-row md:gap-8 md:flex-wrap xl:gap-8"
           role="list">
           <div class="flex items-center gap-3 text-center" role="listitem">
-            <img class="w-[38px] h-[38px] flex-shrink-0" src="<?php echo get_template_directory_uri(); ?>/assets/images/student.svg" alt="শিক্ষার্থী আইকন" />
+            <?php 
+              $icon1 = get_field('stat_1_icon');
+              $icon1_url = $icon1 ? esc_url($icon1) : get_template_directory_uri() . '/assets/images/student.svg';
+            ?>
+            <img class="w-[38px] h-[38px] flex-shrink-0" src="<?php echo $icon1_url; ?>" alt="<?php esc_attr_e(the_field('stat_1_label'), 'nqa'); ?>" />
             <div class="flex flex-col items-start justify-center">
-              <div class="text-lg leading-6 text-white m-0">১০,০০০</div>
-              <div class="text-sm leading-6 text-white m-0">শিক্ষার্থী</div>
+              <div class="text-lg leading-6 text-white m-0"><?php the_field('stat_1_number'); ?></div>
+              <div class="text-sm leading-6 text-white m-0"><?php the_field('stat_1_label'); ?></div>
             </div>
           </div>
           <div class="flex items-center gap-3 text-center" role="listitem">
-            <img class="w-[38px] h-[38px] flex-shrink-0" src="<?php echo get_template_directory_uri(); ?>/assets/images/teacher.svg" alt="শিক্ষক আইকন" />
+            <?php 
+              $icon2 = get_field('stat_1_icon');
+              $icon2_url = $icon2 ? esc_url($icon2) : get_template_directory_uri() . '/assets/images/student.svg';
+            ?>
+            <img class="w-[38px] h-[38px] flex-shrink-0" src="<?php echo $icon2_url; ?>" alt="<?php esc_attr_e(the_field('stat_2_label'), 'nqa'); ?>" />
             <div class="flex flex-col items-start justify-center">
-              <div class="text-lg leading-6 text-white m-0">২৫+</div>
-              <div class="text-sm leading-6 text-white m-0">শিক্ষক</div>
+              <div class="text-lg leading-6 text-white m-0"><?php the_field('stat_2_number'); ?></div>
+              <div class="text-sm leading-6 text-white m-0"><?php the_field('stat_2_label'); ?></div>
             </div>
           </div>
           <div class="flex items-center gap-3 text-center" role="listitem">
-            <img class="w-[38px] h-[38px] flex-shrink-0" src="<?php echo get_template_directory_uri(); ?>/assets/images/check.svg" alt="কোর্স সম্পূর্ণতার হার আইকন" />
+            <?php 
+              $icon3 = get_field('stat_1_icon');
+              $icon3_url = $icon3 ? esc_url($icon3) : get_template_directory_uri() . '/assets/images/student.svg';
+            ?>
+            <img class="w-[38px] h-[38px] flex-shrink-0" src="<?php echo $icon3_url; ?>" alt="<?php esc_attr_e(the_field('stat_3_label'), 'nqa'); ?>" />
             <div class="flex flex-col items-start justify-center">
-              <div class="text-lg leading-6 text-white m-0">৮৯%</div>
-              <div class="text-sm leading-6 text-white m-0">কোর্স কমপ্লিট রেট</div>
+              <div class="text-lg leading-6 text-white m-0"><?php the_field('stat_3_number'); ?></div>
+              <div class="text-sm leading-6 text-white m-0"><?php the_field('stat_3_label'); ?></div>
             </div>
           </div>
         </div>
