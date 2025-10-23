@@ -48,6 +48,11 @@ require get_template_directory() . '/inc/post-types.php';
 require get_template_directory() . '/inc/meta-boxes.php';
 
 /**
+ * Custom Functions
+ */
+require get_template_directory() . '/inc/custom-functions.php';
+
+/**
  * Custom Walker
  */
 require get_template_directory() . '/inc/dropdown-walker.php';

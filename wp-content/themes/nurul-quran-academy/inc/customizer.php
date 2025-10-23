@@ -1025,3 +1025,72 @@ function nqa_feature_customizer($wp_customize) {
     ));
 }
 add_action('customize_register', 'nqa_feature_customizer');
+
+/**
+ * Blog Customizer
+ */
+function nqa_blog_customizer($wp_customize) {
+    $wp_customize->add_section('nqa_blog_section', array(
+        'title' => 'Blogs Section',
+        'priority' => 40,
+    ));
+
+    // Show/Hide Blog
+	$wp_customize->add_setting('nqa_blog_display', array(
+		'default' => true,
+		'sanitize_callback' => 'rest_sanitize_boolean',
+	));
+
+	$wp_customize->add_control('nqa_blog_display', array(
+		'label' => 'Show Blog Section',
+		'section' => 'nqa_blog_section',
+		'type' => 'checkbox',
+	));
+    
+    // Heading with HTML support
+    $wp_customize->add_setting('nqa_blog_heading', array(
+        'default' => 'পছন্দের <span class="text-gradient bg-clip-text text-transparent">ব্লগ</span> পড়ুন',
+        'sanitize_callback' => 'wp_kses_post', // Allows safe HTML
+    ));
+    
+    $wp_customize->add_control('nqa_blog_heading', array(
+        'label' => 'Section Heading',
+        'description' => 'For gradient effect, use: &lt;span class=&quot;text-gradient bg-clip-text text-transparent&quot;&gt;text&lt;/span&gt;',
+        'section' => 'nqa_blog_section',
+        'type' => 'textarea',
+    ));
+
+    // Background Image
+    $wp_customize->add_setting('nqa_blog_bg_image', array(
+        'default' => get_template_directory_uri() . '/assets/images/testimonial-bg.png',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    
+    $wp_customize->add_control(new WP_Customize_Image_Control(
+        $wp_customize, 
+        'nqa_blog_bg_image',
+        array(
+            'label' => 'Background Image',
+            'section' => 'nqa_blog_section',
+        )
+    ));
+
+    // Posts per page
+    $wp_customize->add_setting('nqa_blog_posts_per_page', array(
+        'default' => 6,
+        'sanitize_callback' => 'absint',
+    ));
+
+    $wp_customize->add_control('nqa_blog_posts_per_page', array(
+        'label' => 'Number of Posts to Display',
+        'section' => 'nqa_blog_section',
+        'type' => 'select',
+        'choices' => array(
+            '3' => '3 Posts',
+            '4' => '4 Posts',
+            '5' => '5 Posts',
+            '6' => '6 Posts',
+        ),
+    ));
+}
+add_action('customize_register', 'nqa_blog_customizer');
